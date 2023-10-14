@@ -2,7 +2,6 @@ import Image from 'next/image';
 import prisma from '@/lib/prisma';
 
 export default async function Home() {
-  // prismaを(PlanetScaleをもじって) planetSqlにして呼べるようにする。
   const users = prisma?.user.findMany();
   // Postテーブルから全てデータを取得
   const posts = prisma?.post.findMany();
