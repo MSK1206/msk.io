@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import prisma from '@/lib/prisma';
 import SignIn from './components/functions/SignIn';
+import Link from 'next/link';
 
 export default async function Home() {
   return (
@@ -21,6 +22,14 @@ export default async function Home() {
             </div>
           </form>
         </div>
+        <Link
+          href={'/protect'}
+          className="btn btn-base-100 border border-slate-400 rounded-lg p-1 w-[250px] hover:text-transparent hover:bg-white"
+        >
+          <span className="bg-clip-text hover:text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+            認証後に見れるページ
+          </span>
+        </Link>
       </div>
     </main>
   );
