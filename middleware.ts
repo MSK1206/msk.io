@@ -1,21 +1,15 @@
 import { withAuth } from 'next-auth/middleware';
 
-declare module 'next-auth/jwt' {
-  interface JWT {
-    userRole?: 'ADMIN';
-  }
-}
-
 export default withAuth({
   callbacks: {
     async authorized({ req, token }) {
-      // `/admin` requires admin role
-      if (req.nextUrl.pathname === '/admin') {
-        return token?.userRole === 'ADMIN';
+      if (
+        req.nextUrl.pathname === '/admin' ||
+        req.nextUrl.pathname === '/protect'
+      ) {
+        return !!token;
       }
-      return !!token;
+      return true;
     },
   },
 });
-
-export const config = { matcher: ['/protect', '/admin'] };
