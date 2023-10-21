@@ -33,7 +33,7 @@ export default async function handler(
     res.status(200).json({ content: 'Admin page content' });
   } else if (user.role === 'CUSTOMER') {
     // ユーザーが顧客の場合
-    res.status(200).json({ content: 'Return to home button' });
+    res.status(200).json({ content: 'Return to Home' });
   } else {
     // ユーザーがその他の役割の場合
     res.status(403).json({ content: 'Forbidden' });
